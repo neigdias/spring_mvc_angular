@@ -1,4 +1,4 @@
-	package controller;
+package main;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

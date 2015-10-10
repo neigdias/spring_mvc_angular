@@ -1,6 +1,8 @@
-package controller;
+package main.controller;
 
 import java.util.concurrent.atomic.AtomicLong;
+
+import main.model.Greeting;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
