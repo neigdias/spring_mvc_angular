@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProdutoController {
-	
 
-    @RequestMapping(value="/produtos", method=RequestMethod.GET)
-    public List<ProdutoEntity> getProdutos() {
+    @RequestMapping(value="/produto", method=RequestMethod.GET)
+    public List<ProdutoEntity> getProduto() {
         List<ProdutoEntity> prod = ConAdmin.getEM().createQuery("select p from ProdutoEntity p").getResultList();
         return prod;
     }
 
-	@RequestMapping(value="/produto", method=RequestMethod.GET)
+	@RequestMapping(value="/produto", method=RequestMethod.POST)
     public String setProduto(String name, Double value) {
 		try {
 			final ProdutoEntity prod = new ProdutoEntity(name, value);
