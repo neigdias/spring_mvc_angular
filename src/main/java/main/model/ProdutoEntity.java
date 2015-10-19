@@ -15,8 +15,10 @@ public class ProdutoEntity {
 	String nome;
 	double preco;
 
-	public ProdutoEntity(final int id, final String nome, final double preco){
-		this.id = id;
+	public ProdutoEntity(){
+	}
+
+	public ProdutoEntity(final String nome, final double preco){
 		this.nome = nome;
 		this.preco = preco;
 	}

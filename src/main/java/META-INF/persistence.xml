@@ -14,7 +14,9 @@
 			<property name="hibernate.connection.password" value="notepad"/>
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!--commented in order to don't recreate the db in every app start up-->
+			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 			
 	        <!-- Print executed SQL to stdout -->
 	        <property name="show_sql" value="true" />	        
