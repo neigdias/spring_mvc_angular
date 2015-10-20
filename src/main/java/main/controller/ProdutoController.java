@@ -3,8 +3,6 @@ package main.controller;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import main.ConAdmin;
 import main.model.ProdutoEntity;
@@ -32,7 +30,21 @@ public class ProdutoController {
 			em.getTransaction().commit();
 			return "OK";
 		} catch (Exception e) {
-			return "ERRO: " + e.getMessage();
+			return "ERROR: " + e.getMessage();
 		}
     }
+
+	@RequestMapping(value="/produto", method=RequestMethod.DELETE)
+	public String deleteProduto(Integer id){
+		try {
+			final EntityManager em = ConAdmin.getEM();
+			em.getTransaction().begin();
+			final ProdutoEntity prod = em.find(ProdutoEntity.class, id);
+			ConAdmin.getEM().remove(prod);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			return "ERROR: " + e.getMessage();
+		}
+		return "OK";
+	}
 }
