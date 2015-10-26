@@ -3,6 +3,7 @@ package main.controller;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import main.ConAdmin;
 import main.model.ProdutoEntity;
@@ -15,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutoController {
 
     @RequestMapping(value="/produtos", method=RequestMethod.GET)
-    public List<ProdutoEntity> getProdutos() {
-        List<ProdutoEntity> prod = ConAdmin.getEM().createQuery("select p from ProdutoEntity p").getResultList();
-        return prod;
+    public List<ProdutoEntity> getProdutos(final String name) {
+        TypedQuery<ProdutoEntity> prod = ConAdmin.getEM().createQuery("select p from ProdutoEntity p where p.nome like :name", ProdutoEntity.class);
+        return prod.setParameter("name", '%' + name + '%').getResultList();
     }
 
     @RequestMapping(value="/produto", method=RequestMethod.GET)
