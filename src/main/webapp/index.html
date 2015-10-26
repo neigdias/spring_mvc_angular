@@ -3,16 +3,26 @@
   <meta charset="utf-8"/>
   <title>Index</title>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
-  <script src="app.js"></script>    
+  <script src="public/app.js"></script>    
 </head>
 <body>
   <div ng-controller="MyCtrl">  
-    Nome<input type="text" ng-model="search" class="form-control input-lg" placeholder="O que você procura?" autofocus autocomplete="off">
+    Nome <input type="text" ng-model="search" class="form-control input-lg" placeholder="O que você procura?" autofocus autocomplete="off">
 
-    <input type="button" value="teste" ng-click="teste(search)">
+    <input type="button" value="Listar produtos" ng-click="pesq(search)">
+    <p>
 
-    <br><br>{{dicas.content}}
-    
-  </div>
+    <table>
+      <tr>
+        <td><b>Código</b></td>
+        <td><b>Descrição</b></td>
+        <td><b>Preço</b></td>
+      </tr>
+	  <tr ng-repeat="prod in produtos">
+        <td>{{prod.id}}</td>
+        <td>{{prod.nome}}</td>
+        <td>{{prod.preco}}</td>
+	  </tr>
+    </table>
 </body>
 </html>
