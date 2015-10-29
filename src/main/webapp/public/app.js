@@ -4,6 +4,9 @@ var app = angular.module('app', []);
 app.controller('MyCtrl', function($scope, $http){
 
 		$scope.pesq = function(pesquisa){
+			if (pesquisa == null){
+				pesquisa = "";
+			}
 			$http({url: '/produtos',
 				   method: "GET",
 			       params: {"name" : pesquisa}
